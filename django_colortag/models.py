@@ -20,10 +20,27 @@ class ColorTag(models.Model):
         abstract = True
         ordering = ['slug']
 
-    name = models.CharField(max_length=MAX_LENGTH, help_text=_("Display name for tag"))
-    slug = models.SlugField(max_length=MAX_LENGTH, help_text=_("Slug key for tag. If left blank, one is created from name"))
-    description = models.CharField(max_length=155, blank=True, help_text=_("Describe the usage or meaning of this tag"))
-    color = ColorField(default="#CD0000", help_text=_("Color that is used as background for this tag"))
+    name = models.CharField(
+        max_length=MAX_LENGTH,
+        verbose_name=_("Name"),
+        help_text=_("Display name for tag"),
+    )
+    slug = models.SlugField(
+        max_length=MAX_LENGTH,
+        verbose_name=_("Slug"),
+        help_text=_("Slug key for tag. If left blank, one is created from name"),
+    )
+    description = models.CharField(
+        max_length=155,
+        blank=True,
+        verbose_name=_("Description"),
+        help_text=_("Describe the usage or meaning of this tag"),
+    )
+    color = ColorField(
+        default="#CD0000",
+        verbose_name=_("Color"),
+        help_text=_("Color that is used as background for this tag"),
+    )
 
     @cached_property
     def font_white(self):
